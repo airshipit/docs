@@ -16,3 +16,65 @@
     vars:
       rtd_webhook_id: '90144'
       rtd_project_name: 'airship-docs'
+    post:
+      jobs:
+        - airship-docs-upload-git-mirror
+
+- job:
+    name: airship-docs-upload-git-mirror
+    parent: upload-git-mirror
+    description: Mirrors airship/docs to airshipit/docs
+    vars:
+      git_mirror_repository: airshipit/docs
+    secrets:
+      - name: git_mirror_credentials
+        secret: airship-docs-airshipit-github-secret
+        pass-to-parent: true
+
+- secret:
+    name: airship-docs-airshipit-github-secret
+    data:
+      user: git
+      host: github.com
+      host_key: github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+      ssh_key: !encrypted/pkcs1-oaep
+        - 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
