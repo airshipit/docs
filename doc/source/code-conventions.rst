@@ -107,8 +107,17 @@ Known Standards
 -------------------------------------------------------
 Language         Tools Used
 ===============  ======================================
+Go               gofmt
 Python           YAPF, Flake8
 ===============  ======================================
+
+Go Formatting
+~~~~~~~~~~~~~~~~~~~
+
+Go code should be formatted using gofmt. When using gofmt be sure to use the
+-s flag to include simplification of code for example::
+
+  gofmt -s /path/to/file.go
 
 Python PEP-8 Formatting
 ~~~~~~~~~~~~~~~~~~~~~~~
