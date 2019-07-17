@@ -78,6 +78,9 @@ should implement each of the following makefile targets:
    projects that produce more than one image.
 -  ``tests`` to invoke linting tests (e.g. PEP-8) and unit tests for the
    components in the project
+-  ``format`` to invoke automated code formatting specific to the project's
+   code language (e.g. Python for armada and Go for airshipctl) as listed
+   in the Linting and Formatting Standards.
 
 For projects that are Python based, the makefile targets typically reference
 tox commands, and those projects will include a tox.ini defining the tox
@@ -102,10 +105,45 @@ readability and maintainability.
 ===============  ======================================
 Known Standards
 -------------------------------------------------------
-Language         Uses
+Language         Tools Used
 ===============  ======================================
-Python           PEP-8
+Python           YAPF, Flake8
 ===============  ======================================
+
+Python PEP-8 Formatting
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Python should be formatted via YAPF, the knobs for YAPF can be specified in
+the project's root directory in '.style.yapf' the contents of this file should
+be::
+
+  [style]
+  based_on_style = pep8
+  spaces_before_comment = 2
+  column_limit = 79
+  blank_line_before_nested_class_or_def = false
+  blank_line_before_module_docstring = true
+  split_before_logical_operator = true
+  split_before_first_argument = true
+  allow_split_before_dict_value = false
+  split_before_arithmetic_operator = true
+
+A sample Flake8 section is below, for use in tox.ini, and is the
+method of enforcing import orders via Flake8 extension
+flake8-import-order::
+
+  [flake8]
+  filename = *.py
+  show-source = true
+  # [H106] Don't put vim configuration in source files.
+  # [H201] No 'except:' at least use 'except Exception:'
+  # [H904] Delay string interpolations at logging calls.
+  enable-extensions = H106,H201,H904
+  # [W503] line break before binary operator
+  ignore = W503
+  exclude=.venv,.git,.tox,build,dist,*lib/python*,*egg,tools,*.ini,*.po,*.pot
+  max-complexity = 24
+
 
 Airship components must provide for automated checking of their formatting
 standards, such as the lint step noted above in the makefile. Components may
