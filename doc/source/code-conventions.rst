@@ -158,6 +158,20 @@ Airship components must provide for automated checking of their formatting
 standards, such as the lint step noted above in the makefile. Components may
 provide automated reformatting.
 
+YAML Schema
+~~~~~~~~~~~
+YAML schema defined by Airship should have key names that follow camelCase
+naming conventions.
+
+Note that Airship also integrates and consumes a number of projects from
+other open source communities, which may have their own style conventions,
+and which will therefore be reflected in Airship deployment manifests.
+Those fall outside the scope of these Airship guidelines.
+
+Any YAML schema that violate this convention at the time of this writing
+(e.g. with snake_case keys) may be either grandfathered in, or converted,
+at the development team's discretion.
+
 Tests Location
 ~~~~~~~~~~~~~~
 Tests should be in parallel structures to the related code, unless dictated by

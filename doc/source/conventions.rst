@@ -40,6 +40,7 @@ Conventions and Standards
 
    api-conventions
    code-conventions
+   crd-conventions
    documentation-conventions
    service-logging-conventions
 
