@@ -54,3 +54,4 @@ Airship Security Topics
   template
   haproxy
   ubuntu
+  vulnerabilities
