@@ -1,0 +1,18 @@
+naries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# Various user specific files
+.DS_Store
+.idea/
+.vimrc
+*.swp
+.vscode/
+
+# Docs build
+doc/build/
+.tox
