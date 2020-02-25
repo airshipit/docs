@@ -14,10 +14,10 @@
       License for the specific language governing permissions and limitations
       under the License.
 
-.. _dev-getting-started:
+.. _getting-started:
 
-Getting Started for Airship Developers
-======================================
+Getting Started
+===============
 Airship uses many foundational concepts that should be understood by developers
 wanting to get started. This documentation attempts to provide a survey of
 those topics.
