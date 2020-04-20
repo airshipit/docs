@@ -45,6 +45,7 @@ Conventions and Standards
     code-conventions
     crd-conventions
     documentation-conventions
+    issue-tracking-conventions
     service-logging-conventions
 
 .. _RFC 2119: https://www.ietf.org/rfc/rfc2119.txt
