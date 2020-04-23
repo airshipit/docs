@@ -45,21 +45,72 @@ and follow the standards documented there.
 
 Images
 ~~~~~~
-Each project that creates a `Docker`_ image will keep the dockerfile in a
+Each project that creates `Docker`_ images will keep Dockerfiles in a
 directory ``images`` located at the root of the project. The images directory
 will contain subdirectories for each of the images created as part of that
-project. The subdirectory will contain the dockerfile that can be used to
-generate the image.
+project. The subdirectory will contain Dockerfiles that can be used to
+generate images.
 
 E.g.: For project ``foo``, which also produces a Docker image for ``bar``:
 
--  foo/images/foo contains the dockerfile for ``foo``
--  foo/images/bar contains the dockerfile for ``bar``
+-  foo/images/foo contains Dockerfiles for ``foo``
+-  foo/images/bar contains Dockerfiles for ``bar``
+
+Each image must include the following set of labels conforming to the
+`OCI image annotations standard`_ as the minimum:
+
+::
+
+    org.opencontainers.image.authors='airship-discuss@lists.airshipit.org, irc://#airshipit@freenode'
+    org.opencontainers.image.url='https://airshipit.org'
+    org.opencontainers.image.documentation='<documentation on readthedocs or in repository URL>'
+    org.opencontainers.image.source='<repository URL>'
+    org.opencontainers.image.vendor='The Airship Authors'
+    org.opencontainers.image.licenses='Apache-2.0'
+    org.opencontainers.image.revision='<Git commit ID>'
+    org.opencontainers.image.created='UTC date and time in RFC3339 format with seconds'
+    org.opencontainers.image.title='<image name, e.g. "armada">'
+
+Last three annotations (revision, created and title), being dynamic, are
+added on a container build stage. Others are statically defined in
+Dockerfiles. Optional custom ``org.airshipit.build=community`` annotation is
+added to the Airship images published to the community.
+
+Image tags must follow format:
+
+- ``:<full Git commit ID>_<distro_suffix>``
+- ``:<branch>_<distro_suffix>`` - latest image built from specific branch
+- ``:latest_<distro_suffix>`` - latest image built from master
+
+The ``_<distro suffix>`` (e.g. ``_ubuntu_xenial``) could be omitted. See
+`Airship Multiple Linux Distribution Support`_ specification for details.
+
+Images should follow best practices for the container images. Be slim and
+secure in particular.
+
+Dockerfile
+~~~~~~~~~~
+Dockerfile file names must follow format: ``Dockerfile.<distro_suffix>``, where
+``<distro_suffix>`` matches corresponding image tag suffix. The
+``.<distro_suffix>`` could be omitted where not relevant.
+
+Lines should be indented by a space character next to the Dockerfile
+instruction block they correspond to.
+
+Dockerfile must allow base image substitution via ``FROM`` argument. This is
+to allow the use of base images stored in third-party or internal repositories.
+
+Dockerfile should follow best practices. Use multistage container builds where
+possible to reduce image size and attack surface. ``RUN`` statements should
+pass linting via ``shellcheck``. You may use available Dockerfile linters, if
+you wish to do so.
+
+See `example Dockerfile`_ file for reference.
 
 Makefile
 ~~~~~~~~
-Each project must provide a makefile at the root of the project. The makefile
-should implement each of the following makefile targets:
+Each project must provide a Makefile at the root of the project. The Makefile
+should implement each of the following Makefile targets:
 
 -  ``images`` will produce the docker images for the component and each other
    component it is responsible for building.
@@ -82,7 +133,7 @@ should implement each of the following makefile targets:
    code language (e.g. Python for armada and Go for airshipctl) as listed
    in the Linting and Formatting Standards.
 
-For projects that are Python based, the makefile targets typically reference
+For projects that are Python based, the Makefile targets typically reference
 tox commands, and those projects will include a tox.ini defining the tox
 targets. Note that tox.ini files will reside inside the source directories for
 modules within the project, but a top-level tox.ini may exist at the root of
@@ -90,7 +141,7 @@ the repository that includes the necessary targets to build documentation.
 
 Documentation
 ~~~~~~~~~~~~~
-Also see :ref:`documentation-conventions`
+Also see :ref:`documentation-conventions`.
 
 Documentation source for the component should reside in a 'docs' directory at
 the root of the project.
@@ -298,3 +349,6 @@ prevail.
 .. _ansible-lint: https://github.com/ansible/ansible-lint
 .. _markdownlint: https://github.com/DavidAnson/markdownlint
 .. _Shellcheck: https://github.com/koalaman/shellcheck
+.. _OCI image annotations standard: https://github.com/opencontainers/image-spec/blob/master/annotations.md#annotations
+.. _Airship Multiple Linux Distribution Support: https://airship-specs.readthedocs.io/en/latest/specs/1.x/approved/airship_multi_linux_distros.html#container-builds
+.. _example Dockerfile: https://opendev.org/airship/docs/src/branch/master/examples/Dockerfile.opensuse_15
