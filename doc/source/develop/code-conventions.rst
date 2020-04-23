@@ -33,7 +33,7 @@ contain subdirectories for each of the charts maintained as part of that
 project. These subdirectories should be named for the component represented by
 that chart.
 
-e.g.: For project ``foo``, which also maintains the charts for ``bar`` and
+E.g.: For project ``foo``, which also maintains the charts for ``bar`` and
 ``baz``:
 
 -  foo/charts/foo contains the chart for ``foo``
@@ -51,7 +51,7 @@ will contain subdirectories for each of the images created as part of that
 project. The subdirectory will contain the dockerfile that can be used to
 generate the image.
 
-e.g.: For project ``foo``, which also produces a Docker image for ``bar``:
+E.g.: For project ``foo``, which also produces a Docker image for ``bar``:
 
 -  foo/images/foo contains the dockerfile for ``foo``
 -  foo/images/bar contains the dockerfile for ``bar``
@@ -107,9 +107,16 @@ Known Standards
 -------------------------------------------------------
 Language         Tools Used
 ===============  ======================================
+Ansible          ansible-lint
 Go               gofmt
 Python           YAPF, Flake8
 ===============  ======================================
+
+Ansible formatting
+~~~~~~~~~~~~~~~~~~
+
+Ansible code should be linted to be conformant to the standards checked
+by `ansible-lint`_ project.
 
 Go Formatting
 ~~~~~~~~~~~~~~~~~~~
@@ -155,8 +162,8 @@ flake8-import-order::
 
 
 Airship components must provide for automated checking of their formatting
-standards, such as the lint step noted above in the makefile. Components may
-provide automated reformatting.
+standards, such as the lint step noted above in the Makefile, and in the future
+via CI jobs. Components may provide automated reformatting.
 
 YAML Schema
 ~~~~~~~~~~~
@@ -271,3 +278,4 @@ prevail.
 .. _Docker: https://www.docker.com/
 .. _helm-toolkit: https://git.openstack.org/cgit/openstack/openstack-helm-infra/tree/helm-toolkit
 .. _Openstack-Helm: https://wiki.openstack.org/wiki/Openstack-helm
+.. _ansible-lint: https://github.com/ansible/ansible-lint
