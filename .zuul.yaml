@@ -19,6 +19,9 @@
     post:
       jobs:
         - airship-docs-upload-git-mirror
+    promote:
+      jobs:
+        - promote-airship-docs-website
 
 - job:
     name: airship-docs-upload-git-mirror
