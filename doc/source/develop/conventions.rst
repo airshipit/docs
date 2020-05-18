@@ -18,11 +18,13 @@
 
 Airship Conventions
 ===================
-Airship components conform to a minimal set of conventions to
-provide for reasonable levels of consistency.
+
+Airship components conform to a minimal set of conventions to provide for
+reasonable levels of consistency.
 
 Language
 --------
+
 While these documents are not an IETF RFC, `RFC 2119`_ provides for useful
 language definitions. In this spirit:
 
@@ -36,12 +38,13 @@ Conventions and Standards
 -------------------------
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
+    :hidden:
 
-   api-conventions
-   code-conventions
-   crd-conventions
-   documentation-conventions
-   service-logging-conventions
+    api-conventions
+    code-conventions
+    crd-conventions
+    documentation-conventions
+    service-logging-conventions
 
 .. _RFC 2119: https://www.ietf.org/rfc/rfc2119.txt

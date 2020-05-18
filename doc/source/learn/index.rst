@@ -17,4 +17,4 @@ Learn About Airship
 .. toctree::
    :maxdepth: 3
 
-   ../security/guide
+   vulnerabilities
