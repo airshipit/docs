@@ -14,12 +14,6 @@
       License for the specific language governing permissions and limitations
       under the License.
 
-.. note::
-
-  These documents will be reworked to reflect the changes associated with
-  becoming an OpenStack hosted project: Airship. Expect major changes to occur
-  with time. See more at `airshipit.org`_
-
 Welcome to Airship documentation!
 =================================
 
@@ -27,11 +21,35 @@ Airship is a collection of components that declaratively configure, deploy
 and maintain a `Kubernetes`_ environment defined by `yaml`_ documents.
 
 .. toctree::
+   :caption: Learn About Airship
    :maxdepth: 3
+   :hidden:
 
-   learn/index.rst
+   learn/vulnerabilities.rst
+
+.. toctree::
+   :caption: Try Airship
+   :maxdepth: 3
+   :hidden:
+
    try/index.rst
-   develop/index.rst
+
+.. toctree::
+   :caption: Develop Airship
+   :maxdepth: 3
+   :hidden:
+
+   develop/developers.rst
+   develop/conventions.rst
+
+.. toctree::
+   :caption: Airship Project Documentation
+   :hidden:
+
+   Airship Documentation <https://docs.airshipit.org>
+   Airshipctl <https://docs.airshipit.org/airshipctl>
+   Airshipui <https://docs.airshipit.org/airshipui>
+   Treasuremap <https://docs.airshipit.org/treasuremap>
 
 .. _airshipit.org: https://airshipit.org
 .. _Kubernetes: https://kubernetes.io/
