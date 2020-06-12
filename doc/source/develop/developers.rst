@@ -11,8 +11,25 @@
       License for the specific language governing permissions and limitations
       under the License.
 
-Getting Started - Airship 2 Development
-=======================================
+===============
+Getting Started
+===============
+
+Thank you for your interest in Airship. Our community is eager to help you
+contribute to the success of our project and welcome you as a member of our
+community!
+
+We invite you to reach out to us at any time via the `Airship mailing list`_ or
+on our `Slack workspace`_.
+
+Welcome aboard!
+
+.. _Airship mailing list: http://lists.airshipit.org
+.. _Slack workspace: http://airshipit.org/slack
+
+=====================
+Airship 2 Development
+=====================
 
 Development is underway on Airship 2: the educated evolution of Airship 1,
 designed with our experience using Airship in production. Airship 2 makes the
@@ -32,8 +49,9 @@ development by referencing the `airshipctl`_ or the `airshipui`_ documentation.
 .. _Kustomize: https://github.com/kubernetes-sigs/kustomize
 .. _Metal Kubed: https://metal3.io
 
-Getting Started - Airship 1 Development
-=======================================
+=====================
+Airship 1 Development
+=====================
 
 Airship 1 is a collection of open source tools that automate cloud provisioning
 and management. Airship provides a declarative framework for defining and
