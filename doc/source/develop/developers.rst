@@ -96,7 +96,7 @@ smaller, demo site.
 `Airsloop`_ is a fully-authored Airship site that can be quickly deployed as a
 baremetal, demo lab.
 
-.. _Airship-in-a-Bottle: https://opendev.org/airship/in-a-bottle
+.. _Airship-in-a-Bottle: https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab
 
 .. _Airskiff: https://docs.airshipit.org/treasuremap/airskiff.html
 
@@ -198,8 +198,7 @@ component images.
 
 .. _Airskiff: https://docs.airshipit.org/treasuremap/airskiff.html
 
-.. _Airship-in-a-Bottle Multinode: http://git.openstack.org/cgit/openstack/
-    airship-in-a-bottle/tree/tools/multi_nodes_gate/README.rst
+.. _Airship-in-a-Bottle Multinode: https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab
 
 Final Checks
 ------------
