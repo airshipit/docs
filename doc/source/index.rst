@@ -38,6 +38,7 @@ developers.
 
    What is Airship? <https://www.airshipit.org/collateral/Airship_OnePager.pdf>
    learn/vulnerabilities.rst
+   develop/layering.rst
 
 .. toctree::
    :caption: Try Airship
