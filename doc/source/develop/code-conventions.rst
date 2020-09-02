@@ -108,6 +108,7 @@ Known Standards
 Language         Tools Used
 ===============  ======================================
 Ansible          ansible-lint
+Bash             Shellcheck
 Go               gofmt
 Markdown         markdownlint
 Python           YAPF, Flake8
@@ -119,8 +120,17 @@ Ansible formatting
 Ansible code should be linted to be conformant to the standards checked
 by `ansible-lint`_ project.
 
+Bash Formatting
+~~~~~~~~~~~~~~~
+
+Bash shell scripts code should be linted to be conformant to the standards
+checked by `Shellcheck`_ project.
+
+Bash shell scripts code in Helm templates should ideally be linted as well,
+however gating of it is a noble goal and is only desired.
+
 Go Formatting
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 Go code should be formatted using gofmt. When using gofmt be sure to use the
 -s flag to include simplification of code for example::
@@ -136,8 +146,8 @@ standards checked by `markdownlint`_ project.
 Python PEP-8 Formatting
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Python should be formatted via YAPF, the knobs for YAPF can be specified in
-the project's root directory in '.style.yapf' the contents of this file should
+Python should be formatted via YAPF. The knobs for YAPF can be specified in
+the project's root directory in '.style.yapf'. The contents of this file should
 be::
 
   [style]
@@ -287,3 +297,4 @@ prevail.
 .. _Openstack-Helm: https://wiki.openstack.org/wiki/Openstack-helm
 .. _ansible-lint: https://github.com/ansible/ansible-lint
 .. _markdownlint: https://github.com/DavidAnson/markdownlint
+.. _Shellcheck: https://github.com/koalaman/shellcheck
