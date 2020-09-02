@@ -109,6 +109,7 @@ Language         Tools Used
 ===============  ======================================
 Ansible          ansible-lint
 Go               gofmt
+Markdown         markdownlint
 Python           YAPF, Flake8
 ===============  ======================================
 
@@ -125,6 +126,12 @@ Go code should be formatted using gofmt. When using gofmt be sure to use the
 -s flag to include simplification of code for example::
 
   gofmt -s /path/to/file.go
+
+Markdown Formatting
+~~~~~~~~~~~~~~~~~~~
+
+Markdown code (documentation) should be linted to be conformant to the
+standards checked by `markdownlint`_ project.
 
 Python PEP-8 Formatting
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -279,3 +286,4 @@ prevail.
 .. _helm-toolkit: https://git.openstack.org/cgit/openstack/openstack-helm-infra/tree/helm-toolkit
 .. _Openstack-Helm: https://wiki.openstack.org/wiki/Openstack-helm
 .. _ansible-lint: https://github.com/ansible/ansible-lint
+.. _markdownlint: https://github.com/DavidAnson/markdownlint
