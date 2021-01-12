@@ -62,6 +62,7 @@ developers.
    Airshipctl <https://docs.airshipit.org/airshipctl>
    Airshipui <https://docs.airshipit.org/airshipui>
    Treasuremap <https://docs.airshipit.org/treasuremap>
+   Airship Glossary of Terms <https://docs.airshipit.org/glossary>
 
 Other Resources
 ---------------
