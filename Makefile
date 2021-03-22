@@ -1,4 +1,5 @@
-# Copyright 2019 AT&T Intellectual Property.  All other rights reserved.
+# Copyright 2019-2021 The Airship authors.
+# All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

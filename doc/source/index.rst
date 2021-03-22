@@ -1,5 +1,5 @@
 ..
-      Copyright 2017-2020 AT&T Intellectual Property.
+      Copyright 2020-2021 The Airship authors.
       All Rights Reserved.
 
       Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -14,9 +14,9 @@
       License for the specific language governing permissions and limitations
       under the License.
 
-=================================
-Welcome to Airship documentation!
-=================================
+===================================
+Welcome to Airship 2 documentation!
+===================================
 
 Airship is a collection of components that declaratively configure, deploy
 and maintain a `Kubernetes`_ environment defined by `YAML`_ documents. Airship
@@ -29,39 +29,22 @@ is supported by the `OpenStack Foundation`_.
 About this Documentation
 ========================
 
-Airship documentation serves the entire community with resources for users and
-developers.
+This Airship 2 documentation in v2.0.0 branch currently serves as a draft only.
 
 .. toctree::
-   :caption: Learn About Airship
+   :caption: Airship 2
    :maxdepth: 1
 
-   What is Airship? <https://www.airshipit.org/collateral/Airship_OnePager.pdf>
-   learn/vulnerabilities.rst
-
-.. toctree::
-   :caption: Try Airship
-   :maxdepth: 1
-
-   Airship-in-a-Bottle <https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab>
-   Airsloop: Simple Bare-Metal Airship <https://docs.airshipit.org/treasuremap/airsloop.html>
-   Seaworthy: Production-grade Airship <https://docs.airshipit.org/treasuremap/seaworthy.html>
-
-.. toctree::
-   :caption: Develop Airship
-   :maxdepth: 1
-
-   develop/developers.rst
-   develop/conventions.rst
-
-.. toctree::
-   :caption: Airship Project Documentation
-   :maxdepth: 1
-
-   Airship Documentation <https://docs.airshipit.org>
-   Airshipctl <https://docs.airshipit.org/airshipctl>
-   Airshipui <https://docs.airshipit.org/airshipui>
-   Treasuremap <https://docs.airshipit.org/treasuremap>
+   airship2/basics.rst
+   airship2/try.rst
+   airship2/production.rst
+   airship2/howto.rst
+   airship2/release-notes.rst
+   airship2/training.rst
+   airship2/contributing.rst
+   airship2/reference.rst
+   airship2/architecture.rst
+   airship2/other.rst
    learn/glossary.rst
 
 Other Resources

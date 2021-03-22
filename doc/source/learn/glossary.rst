@@ -1,5 +1,5 @@
 ..
-      Copyright 2017-2020 AT&T Intellectual Property.
+      Copyright 2020-2021 The Airship authors.
       All Rights Reserved.
 
       Licensed under the Apache License, Version 2.0 (the "License"); you may
