@@ -28,28 +28,6 @@ Welcome aboard!
 .. _Slack workspace: http://airshipit.org/slack
 
 =====================
-Airship 2 Development
-=====================
-
-Development is underway on Airship 2: the educated evolution of Airship 1,
-designed with our experience using Airship in production. Airship 2 makes the
-Airship control plane ephemeral, leverages entrenched upstream projects such as
-the `Cluster API`_, `Metal Kubed`_, Kustomize_, and `kubeadm`_, and embraces
-Kubernetes Custom Resource Definitions (CRDs). To learn more about the Airship
-2.0 evolution, see the `Airship 2 evolution blog series`_.
-
-Each Airship 2 project has its own development guidelines. Join the ongoing Airship 2
-development by referencing the `airshipctl`_ or the `airshipui`_ documentation.
-
-.. _airshipctl: https://docs.airshipit.org/airshipctl/developers.html
-.. _Airship 2 evolution blog series: https://www.airshipit.org/blog/airship-blog-series-1-evolution-towards-2.0
-.. _airshipui: https://docs.airshipit.org/airshipui/developers.html
-.. _Cluster API: https://github.com/kubernetes-sigs/cluster-api
-.. _kubeadm: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm
-.. _Kustomize: https://github.com/kubernetes-sigs/kustomize
-.. _Metal Kubed: https://metal3.io
-
-=====================
 Airship 1 Development
 =====================
 

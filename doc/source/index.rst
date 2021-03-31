@@ -1,5 +1,5 @@
 ..
-      Copyright 2017-2020 AT&T Intellectual Property.
+      Copyright 2017-2021 AT&T Intellectual Property.
       All Rights Reserved.
 
       Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -33,27 +33,28 @@ Airship documentation serves the entire community with resources for users and
 developers.
 
 .. toctree::
-   :caption: Learn About Airship
+   :caption: Learn About Airship 2
    :maxdepth: 1
 
-   What is Airship? <https://www.airshipit.org/collateral/Airship_OnePager.pdf>
+   What is Airship 2? <https://www.airshipit.org/collateral/Airship_2.0_White_Paper.pdf>
+   airship2/basics.rst
+   airship2/release-notes.rst
    learn/vulnerabilities.rst
-   develop/layering.rst
+   airship2/layering.rst
+   learn/glossary.rst
 
 .. toctree::
-   :caption: Try Airship
+   :caption: Try Airship 2
    :maxdepth: 1
 
-   Airship-in-a-Bottle <https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab>
-   Airsloop: Simple Bare-Metal Airship <https://docs.airshipit.org/treasuremap/airsloop.html>
-   Seaworthy: Production-grade Airship <https://docs.airshipit.org/treasuremap/seaworthy.html>
+   airship2/airship-in-a-pod.rst
+   airship2/production.rst
 
 .. toctree::
-   :caption: Develop Airship
+   :caption: Develop Airship 2
    :maxdepth: 1
 
-   develop/developers.rst
-   develop/conventions.rst
+   develop/airship2-developers.rst
 
 .. toctree::
    :caption: Airship Project Documentation
@@ -63,7 +64,17 @@ developers.
    Airshipctl <https://docs.airshipit.org/airshipctl>
    Airshipui <https://docs.airshipit.org/airshipui>
    Treasuremap <https://docs.airshipit.org/treasuremap>
-   learn/glossary.rst
+
+.. toctree::
+   :caption: Airship 1 Documentation
+   :maxdepth: 1
+
+   What is Airship 1? <https://www.airshipit.org/collateral/Airship_OnePager.pdf>
+   Airship-in-a-Bottle <https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab>
+   Airsloop: Simple Bare-Metal Airship <https://docs.airshipit.org/treasuremap/airsloop.html>
+   Seaworthy: Production-grade Airship <https://docs.airshipit.org/treasuremap/seaworthy.html>
+   develop/airship1-developers.rst
+   develop/conventions.rst
 
 Other Resources
 ---------------
