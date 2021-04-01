@@ -1,4 +1,4 @@
-..
+﻿..
       Copyright 2020-2021 The Airship authors.
       All Rights Reserved.
 
@@ -17,4 +17,42 @@
 Release Notes
 =============
 
-Coming soon.
+Airship Overview
+----------------
+
+Airship is a robust system for delivering container-based cloud infrastructure
+(or any other containerized workload)
+at scale on bare metal, public clouds, and edge clouds.
+Airship integrates best-of-class CNCF projects, such as Cluster API, Kustomize, Metal3,
+and Helm Operator, to deliver a resilient and predictable lifecycle experience.
+
+Combining easy lifecycle management with zero-downtime real-time upgrade capability,
+Airship can handle the
+provisioning and configuration of the operating system, RAID services, and the network.
+
+Airship 2.0 (16 April 2021)
+------------------------------------
+
+Release 2.0 introduces a variety of significant improvements:
+
+-  No-touch bootstrap for remote sites as well as local sites
+-  Declarative image building for both ephemeral ISO and bare metal targeted QCOWs
+-  Declarative cluster lifecycle
+-  Lifecycle for bare metal, public cloud, and edge cloud infrastructure
+-  Single command line "airshipctl"
+-  Lifecycle defined as a sequence of phases
+-  Introduction of a plan for the phases
+-  Seamless integration with CNCF projects (CAPI, Metal3, Kustomize)
+-  Seamless integration with security plugins like SOPS
+-  Generic container interface: mechanism to extend airshipctl with ad hoc functionality
+-  Introduction of host config operator for day 2 operations
+
+Change Log
+----------
+
+Change logs list feature and defect details for a release.
+For the complete set of releases including links to change logs,
+see the `treasuremap`_ and `airshipctl`_ Github release pages.
+
+.. _treasuremap: https://github.com/airshipit/treasuremap/releases/
+.. _airshipctl: https://github.com/airshipit/airshipctl/releases/
