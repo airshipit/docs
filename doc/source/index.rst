@@ -75,6 +75,7 @@ developers.
    Seaworthy: Production-grade Airship <https://docs.airshipit.org/treasuremap/seaworthy.html>
    develop/airship1-developers.rst
    develop/conventions.rst
+   airship1/airship-1-flow.rst
 
 Other Resources
 ---------------
