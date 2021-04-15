@@ -48,7 +48,8 @@ developers.
    :maxdepth: 1
 
    airship2/airship-in-a-pod.rst
-   airship2/production.rst
+   airship2/baremetal.rst
+   airship2/providers.rst
 
 .. toctree::
    :caption: Develop Airship 2
@@ -63,7 +64,6 @@ developers.
    Airship Documentation <https://docs.airshipit.org>
    Airshipctl <https://docs.airshipit.org/airshipctl>
    Airshipui <https://docs.airshipit.org/airshipui>
-   Treasuremap <https://docs.airshipit.org/treasuremap>
 
 .. toctree::
    :caption: Airship 1 Documentation
@@ -73,6 +73,7 @@ developers.
    Airship-in-a-Bottle <https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab>
    Airsloop: Simple Bare-Metal Airship <https://docs.airshipit.org/treasuremap/airsloop.html>
    Seaworthy: Production-grade Airship <https://docs.airshipit.org/treasuremap/seaworthy.html>
+   Treasuremap <https://docs.airshipit.org/treasuremap>
    develop/airship1-developers.rst
    develop/conventions.rst
    airship1/airship-1-flow.rst

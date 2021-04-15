@@ -72,7 +72,7 @@ Additionally, we provide a reference architecture for easily deploying a
 smaller, demo site.
 
 `Airsloop`_ is a fully-authored Airship site that can be quickly deployed as a
-baremetal, demo lab.
+bare metal, demo lab.
 
 .. _Airship-in-a-Bottle: https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab
 
