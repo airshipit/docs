@@ -13,6 +13,11 @@ Prerequisites
 Before starting, ensure that you have completed :ref:`system requirements and set up <site_setup_guide>`,
 including the the BIOS and Redfish settings, hardware RAID configuration etc.
 
+.. warning::
+
+   Ensure all the hosts are powered off, including ephemeral node, controller
+   nodes and worker nodes.
+
 Airshipctl Phases
 ~~~~~~~~~~~~~~~~~
 
@@ -354,6 +359,18 @@ nodes:
     ./tools/deployment/34_deploy_controlplane_target.sh
 
 Estimated runtime: **30 minutes** (Depends on the number of controller nodes).
+
+.. note::
+
+   When the second controller node joins the cluster, the script may fail with
+   the error message ``"etcdserver: request timed out"``. This is a known issue.
+   You can just wait until all the other controller nodes join the cluster
+   before executing the next phase. To check the list of nodes in the cluster,
+   run:
+
+.. code-block:: bash
+
+   kubectl --kubeconfig ${HOME}/.airship/kubeconfig --context target-cluster get nodes
 
 Provisioning Worker Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~

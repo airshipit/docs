@@ -144,13 +144,12 @@ Last, update network references (e.g., interface name, IP address, port) in
 the target cluster deployment documents:
 
    * ``manifests/site/${SITE}/phases/phase-patch.yaml``
-   * ``manifests/site/${SITE}/target/catalogs/versions-airshipctl.yaml``
+   * ``manifests/site/${SITE}/target/catalogues/versions-airshipctl.yaml``
    * ``manifests/site/${SITE}/target/controlplane/metal3machinetemplate.yaml``
    * ``manifests/site/${SITE}/target/controlplane/versions-catalogue-patch.yaml``
    * ``manifests/site/${SITE}/target/initinfra-networking/patch_calico.yaml``
-   * ``manifests/site/${SITE}/target/workers/metal3machinetemplate.yaml``
    * ``manifests/site/${SITE}/target/workers/provision/metal3machinetemplate.yaml``
-   * ``manifests/site/${SITE}/target/network-policies/calico_failsafe_rules_patch.yaml``
+   * ``manifests/site/${SITE}/kubeconfig/kubeconfig.yaml``
 
 Host Inventory
 ++++++++++++++
@@ -171,18 +170,20 @@ Update the host inventory and other ephemeral and target cluster documents:
      defines the host information such as BMC address, credential, PXE NIC, IP
      addresses, hardware profile name, etc., for every single host.
    * ``manifests/site/${SITE}/ephemeral/bootstrap/baremetalhost.yaml``:
-     Contains the host name of the ephemeral bare metal host.
-   * ``manifests/site/${SITE}/ephemeral/bootstrap/hostgenerato/host-generation.yaml``:
+     Contains the host name and bmc address of the ephemeral bare metal host.
+   * ``manifests/site/${SITE}/ephemeral/bootstrap/hostgenerator/host-generation.yaml``:
      Defines the single host in the ephemeral cluster.
    * ``manifests/site/${SITE}/ephemeral/controlplane/hostgenerator/host-generation.yaml``:
      Defines the host name of the first controller node to bootstrap ion the
      target cluster.
    * ``manifests/site/${SITE}/phases/phase-patch.yaml``: Updates the ephemeral
      node host name and ISO URL.
-   * ``manifests/site/${SITE}/target/controlplane/hostgenerator/host-generation.yaml``
+   * ``manifests/site/${SITE}/target/controlplane/hostgenerator/host-generation.yaml``:
      Defines the list of hosts to be deployed in the target cluster.
-   * ``manifests/site/${SITE}/target/workers/hostgenerator/host-generation.yaml``
+   * ``manifests/site/${SITE}/target/workers/hostgenerator/host-generation.yaml``:
      Defines the list of hosts of the worker nodes.
+   * ``manifests/site/air-pod01/target/workers/provision/machinedeployment.yaml``:
+     Configures the total number of worker nodes
 
 Downstream Images and Binaries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

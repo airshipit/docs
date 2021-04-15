@@ -43,13 +43,13 @@ network configuration.
   deployed with very minimal requirements if needed (e.g., single disk, single
   network).
 
-  For simplified non-bonded, and single disk examples, see
-  ``manifests/site/test_site``.
+  For simplified non-bonded, and single disk examples, see Treasuremap
+  `test-site`_.
 
-.. _reference-airship-core:
+.. _reference-airship-core: https://github.com/airshipit/treasuremap/tree/v2.0/manifests/site/reference-airship-core
 
-    https://github.com/airshipit/treasuremap/tree/v2.0/manifests/site/reference-airship-core
-    
+.. _test-site: https://github.com/airshipit/treasuremap/tree/v2.0/manifests/site/test-site
+
 BIOS, Redfish and PXE
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -267,13 +267,8 @@ Install Essential Tools
 .. code-block:: bash
 
     ./tools/deployment/10_install_essentials.sh
-
-   It is recommended to add the current user to the ``docker`` group to avoid
-   using sudo in the subsequent steps:
-
-.. code-block:: bash
-
-    sudo usermod -aG docker <user>
+    # Recommend to add the user to the docker group
+    sudo usermod -aG docker $USER
 
 2. Install airshipctl executable.
 
