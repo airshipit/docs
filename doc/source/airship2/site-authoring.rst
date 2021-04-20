@@ -100,8 +100,8 @@ identify and explain the parameters that need to change when authoring a new
 site.
 
 The areas that must be updated for a new site are flagged with the label
-``NEWSITE-CHANGEME`` in YAML comments. Search for all instances of
-``NEWSITE-CHANGEME`` in your new site definition. Then follow the instructions
+``NEWSITE_CHANGEME`` in YAML comments. Search for all instances of
+``NEWSITE_CHANGEME`` in your new site definition. Then follow the instructions
 that accompany the tag in order to make all needed changes to author your new
 Airship site.
 
@@ -110,9 +110,9 @@ the order in which you should build your site files is as follows.
 
 .. note::
 
-   A helpful practice is to replace the tag ``NEWSITE-CHANGEME`` with
-   ``NEWSITE-CHANGED`` along the way when each site specific value is entered.
-   You can run a global search on ``NEWSITE-CHANGEME`` at the end to check if
+   A helpful practice is to replace the tag ``NEWSITE_CHANGEME`` with
+   ``NEWSITE_CHANGED`` along the way when each site specific value is entered.
+   You can run a global search on ``NEWSITE_CHANGEME`` at the end to check if
    any site fields were missed.
 
 Network
