@@ -70,7 +70,7 @@ developers.
    :maxdepth: 1
 
    What is Airship 1? <https://www.airshipit.org/collateral/Airship_OnePager.pdf>
-   Airship-in-a-Bottle <https://opendev.org/airship/treasuremap/src/branch/master/tools/deployment/aiab>
+   Airship-in-a-Bottle <https://opendev.org/airship/treasuremap/src/branch/v1.9/tools/deployment/aiab>
    Airsloop: Simple Bare-Metal Airship <https://docs.airshipit.org/treasuremap/airsloop.html>
    Seaworthy: Production-grade Airship <https://docs.airshipit.org/treasuremap/seaworthy.html>
    Treasuremap <https://docs.airshipit.org/treasuremap>

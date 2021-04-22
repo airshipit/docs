@@ -42,7 +42,7 @@ Each Airship 2 project has its own development guidelines. Join the ongoing Airs
 development by referencing the `airshipctl`_ or the `airshipui`_ documentation.
 
 .. _airshipctl: https://docs.airshipit.org/airshipctl/developers.html
-.. _Airship 2 evolution blog series: https://www.airshipit.org/blog/airship-blog-series-1-evolution-towards-2.0
+.. _Airship 2 evolution blog series: https://www.airshipit.org/blog/airship-update-march-2021
 .. _airshipui: https://docs.airshipit.org/airshipui/developers.html
 .. _Cluster API: https://github.com/kubernetes-sigs/cluster-api
 .. _kubeadm: https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm
