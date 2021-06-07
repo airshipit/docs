@@ -21,22 +21,22 @@ including the the BIOS and Redfish settings, hardware RAID configuration etc.
 Airshipctl Phases
 ~~~~~~~~~~~~~~~~~
 
-A new concept with Airship 2 is :term:`phases<Phase>`. A phase is a step to be
-performed in order to achieve a desired state of the managed site. Phases group
-sets of commands together for a particular deployment step into one phase apply
-command. This greatly simplifies executing deployment.
+A new concept with Airship 2 is :term:`phases<Phase>` and :term:`phase plans<Phase Plan>`.
+A phase is a step to be performed in order to achieve a desired state of the
+managed site. A plan is a collection of phases that should be executed in
+sequential order. The use of phases and phase plan is to simplify executing
+deployment and life cycle operations.
 
-The Airship 2 deployment uses heavily the ``airshipctl`` commands, especially the
-``airshipctl phase run`` commands. You may find it helpful to get familiarized with
-the `airshipctl command reference`_ and `example usage`_.
+The Airship 2 deployment uses heavily the ``airshipctl`` commands, especially
+the ``airshipctl plan run`` and ``airshipctl phase run`` commands. You may
+find it helpful to get familirized with the `airshipctl command reference`_
+and `example usage`_.
 
-To facilitate the site deployment, the Airship Treasuremap project provides a
-set of deployment scripts in the ``tools/deployment`` directory. These scripts
-are wrappers of the `airshipctl` commands with additional flow controls. They
-are numbered sequentially in the order of the deployment operations.
-
-The instructions in this document will be based upon the Treasuremap deployment
-scripts.
+To faciliate the site deployment, the Airship Treasuremap project provides a
+set of deployment scripts in the ``tools/deployment/{TYPE_NAME}`` directory.
+These scripts are wrappers of the `airshipctl` commands with additional flow
+controls. They are numbered sequentially in the order of the deployment
+operations.
 
 .. _airshipctl command reference:
     https://docs.airshipit.org/airshipctl/cli/airshipctl.html
@@ -188,7 +188,7 @@ from the treasuremap directory:
 
 .. code-block:: bash
 
-    ./tools/deployment/23_generate_secrets.sh
+    ./tools/deployment/airship-core/23_generate_secrets.sh
 
 The generated secrets will be updated in:
 
@@ -260,12 +260,12 @@ Or, run the provided script from the treasuremap directory:
 
 .. code-block:: bash
 
-    ./tools/deployment/24_build_images.sh
+    ./tools/deployment/airship-core/24_build_images.sh
 
 Then, copy the generated ephemeral ISO image to the Web hosting server that
 will serve the ephemeral ISO image. The URL for the image should match what is
 defined in
-``manifests/site/{SITE}/ephemeral/bootstrap/remote_direct_configuration.yaml``.
+``manifests/site/{SITE}/phases/phase-patch.yaml``.
 
 For example, if you have installed the Apache Web server on the jump host as
 described in the earlier step, you can simply execute the following:
@@ -276,91 +276,66 @@ described in the earlier step, you can simply execute the following:
 
 Estimated runtime: **5 minutes**
 
-Deploying Ephemeral Node
-~~~~~~~~~~~~~~~~~~~~~~~~
+Deploying Site
+~~~~~~~~~~~~~~
 
-In this step, we will create an ephemeral Kubernetes instance that ``airshipctl``
-can communicate with for subsequent steps. This ephemeral host provides a
-foothold in the target environment so the standard ``cluster-api`` bootstrap
-flow can be executed.
+Now that the ephemeral ISO image in place, you are ready to deploy the site.
+The deployment involves the following tasks:
 
-First, let's deploy the ephemeral node via Redfish with the ephemeral ISO image
-generated in previous step:
+* Deploying Ephemeral Node: Creates an ephemeral Kubernetes instance where the
+  ``cluster-api`` bootstrap flow can be executed subsequently. It deploys the
+  ephemeral node via Redfish with the ephemeral ISO image generated previously
+  ``Calico``, ``metal3.io`` and ``cluster-api`` components onto the ephemeral
+  node. Estimated runtime: **20 minutes**
+* Deploying Target Cluster: Provisions the target cluster's first control plane
+  node using the cluster-api bootstrap flow in the ephemeral cluster, deploys
+  the infrastructure components inlcuding Calico and meta3.io and ``cluster-api``
+  components, then complete the target cluster by provisioning the rest of the
+  control plane nodes. The ephemeral node is stopped as a result. Estimated
+  runtime: **60-90 minutes**
+* Provisioning Worker Nodes:  uses the target control plane Kubernetes host to
+  deploy, classify and provision the worker nodes. Estimated runtime: **20 minutes**
+* Deploying Workloads: The Treasuremap type ``airship-core`` deploys the
+  following workloads by default: ingress, storage-cluster. Estimated runtime:
+  Varies by the workload contents.
+
+The phase plan ``deploy-gating`` in the ``treasuremap/manifests/site/reference-airship-core/phases/baremetal-plan.yaml``
+defines the list of phases that are required to provision a typical bare metal
+site. Invoke the phase plan run command to start the deployment:
 
 .. code-block:: bash
 
-    ./tools/deployment/25_deploy_ephemeral_node.sh
-
-Estimated runtime: **10 minutes**
+    airshipctl plan run deploy-gating --debug
 
 .. note:: If desired or if Redfish is not available, the ISO image can be
-  mounted through other means, e.g. out-of-band management or a USB drive.
-
-Now the ephemeral node is established, we can deploy ``Calico``, ``metal3.io`` and
-``cluster-api`` components onto the ephemeral node:
-
-.. code-block:: bash
-
-    ./tools/deployment/26_deploy_capi_ephemeral_node.sh
-
-Estimated runtime: **10 minutes**
-
-To use ssh to access the ephemeral node, you will need the OAM IP from the
-networking catalogue, and the user name and password from the airshipctl phase
-render command output.
-
-.. code-block:: bash
-
-    airshipctl phase render iso-cloud-init-data
-
-Deploying Target Cluster
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Now you are ready to use the ephemeral Kubernetes to provision the first target
-cluster node using the cluster-api bootstrap flow.
-
-Create the target Kubernetes cluster resources:
-
-.. code-block:: bash
-
-    ./tools/deployment/30_deploy_controlplane.sh
-
-Estimated runtime: **25 minutes**
-
-Deploy infrastructure components including Calico and meta3.io:
-
-.. code-block:: bash
-
-    ./tools/deployment/31_deploy_initinfra_target_node.sh
-
-Estimated runtime: **10 minutes**
-
-Deploy ``cluster-api`` components to the target cluster:
-
-.. code-block:: bash
-
-    ./tools/deployment/32_cluster_init_target_node.sh
-
-Estimated runtime: **1-2 minutes**
-
-Then, stop the ephemeral host and move Cluster objects to target cluster:
-
-.. code-block:: bash
-
-    ./tools/deployment/33_cluster_move_target_node.sh
-
-Estimated runtime: **1-2 minutes**
-
-Lastly, complete the target cluster by provisioning the rest of the controller
-nodes:
-
-.. code-block:: bash
-
-    ./tools/deployment/34_deploy_controlplane_target.sh
-
-Estimated runtime: **30 minutes** (Depends on the number of controller nodes).
+  mounted through other means, e.g. out-of-band management or a USB drive. In
+  such cases, the user should provide a patch in the site manifest to remove the
+  ``remotedirect-ephemeral`` phase from the phases list in the
+  ``treasuremap/manifests/site/reference-airship-core/phases/baremetal-plan.yaml``.
 
 .. note::
+  The user can add other workload functions to the target workload phase in the
+  ``airship-core`` type, or create their own workload phase from scratch.
+
+  Adding a workload function involves two tasks. First, the user will create the
+  function manifest(s) in the ``$PROJECT/manifest/function`` directory. A good
+  example can be found in the `ingress`_ function from Treasuremap. Second, the
+  user overrides the `kustomization`_ of the target workload phase to include
+  the new workload function in the
+  ``$PROJECT/manifests/site/$SITE/target/workload/kustomization.yaml``.
+
+  For more detailed reference, please go to `Kustomize`_ and airshipctl `phases`_
+  documentation.
+
+.. _ingress: https://github.com/airshipit/treasuremap/tree/v2.1/manifests/function/ingress
+
+.. _kustomization: https://github.com/airshipit/treasuremap/blob/v2.1/manifests/type/airship-core/target/workload/kustomization.yaml
+
+.. _Kustomize: https://kustomize.io
+
+.. _phases: https://docs.airshipit.org/airshipctl/phases.html
+
+.. warning::
 
    When the second controller node joins the cluster, the script may fail with
    the error message ``"etcdserver: request timed out"``. This is a known issue.
@@ -372,65 +347,24 @@ Estimated runtime: **30 minutes** (Depends on the number of controller nodes).
 
    kubectl --kubeconfig ${HOME}/.airship/kubeconfig --context target-cluster get nodes
 
-Provisioning Worker Nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This step uses the target control plane Kubernetes host to provision the
-target cluster worker nodes and apply the necessary phases to deploy software
-on the worker nodes.
-
-To deploy, classify and provision the worker nodes, run:
-
-.. code-block:: bash
-
-    ./tools/deployment/35_deploy_worker_node.sh
-
-Estimated runtime: **20 minutes**
-
-Now the target cluster is fully operational and ready for workload deployment.
-
-Deploying Workloads
-~~~~~~~~~~~~~~~~~~~
-
-The Treasuremap type ``airship-core`` deploys the ingress as a workload. The
-user can add other workload functions to the target workload phase in the
-``airship-core`` type, or create their own workload phase from scratch.
-
-Adding a workload function involves two tasks. First, the user will create the
-function manifest(s) in the ``$PROJECT/manifest/function`` directory. A good
-example can be found in the `ingress`_ function from Treasuremap. Second, the
-user overrides the `kustomization`_ of the target workload phase to include
-the new workload function in the
-``$PROJECT/manifests/site/$SITE/target/workload/kustomization.yaml``.
-
-For more detailed reference, please go to `Kustomize`_ and airshipctl `phases`_
-documentation.
-
-.. _ingress: https://github.com/airshipit/treasuremap/tree/v2.0/manifests/function/ingress
-
-.. _kustomization: https://github.com/airshipit/treasuremap/blob/v2.0/manifests/type/airship-core/target/workload/kustomization.yaml
-
-.. _Kustomize: https://kustomize.io
-
-.. _phases: https://docs.airshipit.org/airshipctl/phases.html
-
-To deploy the workloads, run:
-
-.. code-block:: bash
-
-    ./tools/deployment/36_deploy_workload.sh
-
-Estimated runtime: Varies by the workload content.
-
 Accessing Nodes
 ~~~~~~~~~~~~~~~
 
 Operators can use ssh to access the controller and worker nodes via the OAM IP
-address. The ssh key can be retrieved using the airshipctl phase render command:
+address. The user id and ssh key can be retrieved using the airshipctl phase
+render command:
 
 .. code-block:: bash
 
    airshipctl phase render controlplane-ephemeral
+
+The user can also access the ephemeral node via ssh using the OAM IP from the
+networking catalogue and the user name and password found in the airshipctl phase
+render command output.
+
+.. code-block:: bash
+
+    airshipctl phase render iso-cloud-init-data
 
 Tearing Down Site
 ~~~~~~~~~~~~~~~~~
