@@ -43,12 +43,12 @@ network configuration.
   deployed with very minimal requirements if needed (e.g., single disk, single
   network).
 
-  For simplified non-bonded, and single disk examples, see Treasuremap
+  For simplified non-bonded, and single disk examples, see Airshipctl
   `test-site`_.
 
-.. _reference-airship-core: https://github.com/airshipit/treasuremap/tree/v2.0/manifests/site/reference-airship-core
+.. _reference-airship-core: https://github.com/airshipit/treasuremap/tree/master/manifests/site/reference-airship-core
 
-.. _test-site: https://github.com/airshipit/treasuremap/tree/v2.0/manifests/site/test-site
+.. _test-site: https://github.com/airshipit/airshipctl/tree/master/manifests/site/test-site
 
 BIOS, Redfish and PXE
 ~~~~~~~~~~~~~~~~~~~~~
@@ -81,20 +81,13 @@ Disk
    - Two-disk RAID-1: Operating System
    - Remaining disks: configuration per worker host profile
 
-.. note::
+3. For nodes in the storage cluster:
 
-   As of release v2.0.0, the ``reference-airship-core`` example does not
-   support the integration with the `Rook Storage Operator`_. However, the
-   manifests for the Rook deployment can be found in the
-   ``manifests/function/rook-operator`` directory. If you plan to include
-   Rook for Ceph storage, it is recommended to have the additional disks
-   on all the controller nodes and worker nodes:
-
-   - Two disks JBOD: Ceph Journal and Metadata
-   - Two disks JBOD: Ceph OSD's
-
-.. _Rook Storage Operator:
-    https://rook.io/
+   After the allocation of disks for the host OS and other uses, remaining
+   disks can be configured as RAID-0/JBOD for Ceph. If both SSD and HDD disks
+   are present, it is recommended to configure two Ceph clusters, one for each
+   media technology. The number of storage disks and capacity per disk should
+   be determined by the need of the workloads.
 
 Network
 ~~~~~~~
@@ -238,8 +231,8 @@ Airship Installation
    section.
  * ``SITE``: Name of the site to be deployed.
 
-Download Airshipctl
-~~~~~~~~~~~~~~~~~~~
+Download Airship
+~~~~~~~~~~~~~~~~
 
 1. On the build node, install the Git package:
 
@@ -248,25 +241,31 @@ Download Airshipctl
     sudo apt update
     sudo DEBIAN_FRONTEND=noninteractive apt -y install git
 
-2. Create the Airship home directory and clone the ``airshipctl`` repository:
+2. Create the Airship home directory and clone the ``airshipctl`` and ``treasuremap`` repository:
 
 .. code-block:: bash
 
     mkdir -p $AIRSHIP_CONFIG_MANIFEST_DIRECTORY
     cd $AIRSHIP_CONFIG_MANIFEST_DIRECTORY
     git clone https://opendev.org/airship/airshipctl.git
-    cd airshipctl && git checkout <release-tag|branch|commit-hash>
+    pushd airshipctl
+    git checkout <release-tag|branch|commit-hash>
+    popd
+    git clone https://opendev.org/airship/treasuremap.git
+    pushd treasuremap
+    git checkout <release-tag|branch|commit-hash>
+    popd
 
 Install Essential Tools
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Install the essentials tools, including kubectl, kustomize, pip, and yq.
 
-   From the airshipctl directory, run:
+   From the `treasuremap` directory, run:
 
 .. code-block:: bash
 
-    ./tools/deployment/10_install_essentials.sh
+    ./tools/deployment/airship-core/01_install_essentials.sh
     # Recommend to add the user to the docker group
     sudo usermod -aG docker $USER
 
@@ -274,7 +273,7 @@ Install Essential Tools
 
 .. code-block:: bash
 
-    ./tools/deployment/21_systemwide_executable.sh
+    ./tools/deployment/airship-core/21_systemwide_executable.sh
 
 2. (Optional) Install Apache Web server.
 
