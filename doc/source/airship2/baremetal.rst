@@ -77,6 +77,6 @@ Airshipctl manifests can be found as release tags in the `Airshipctl Releases`_.
   recommended for deployments instead of using the master branch directly.
 
 .. _Airship in Baremetal Environment:
-    https://jenkins.nc.opensource.att.com/job/Deployment/job/stl3-type-core
+    https://jenkins.nc.opensource.att.com/job/Deployment/job/STL3-Baremetal_Deployment
 .. _Airship in Virtualized Environment:
-    https://jenkins.nc.opensource.att.com/job/development/job/Airshipctl
+    https://jenkins.nc.opensource.att.com/job/development/job/AirshipCtl/job/Airshipctl

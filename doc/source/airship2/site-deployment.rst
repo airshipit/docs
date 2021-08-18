@@ -169,7 +169,7 @@ To create or modify a context in the airshipctl config files,
 
 Full details on the ``config`` command can be found here_.
 
-.. _here: https://docs.airshipit.org/airshipctl/cli/airshipctl_config.html
+.. _here: https://docs.airshipit.org/airshipctl/cli/config/airshipctl_config.html
 
 .. _gen_secrets:
 

@@ -347,5 +347,5 @@ Success message example::
     "code": 200
   }
 
-.. _Kubernetes standard for error representation: https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#response-status-kind
+.. _Kubernetes standard for error representation: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#response-status-kind
 .. _HTTP status code: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html

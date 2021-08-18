@@ -351,4 +351,4 @@ prevail.
 .. _Shellcheck: https://github.com/koalaman/shellcheck
 .. _OCI image annotations standard: https://github.com/opencontainers/image-spec/blob/master/annotations.md#annotations
 .. _Airship Multiple Linux Distribution Support: https://airship-specs.readthedocs.io/en/latest/specs/1.x/approved/airship_multi_linux_distros.html#container-builds
-.. _example Dockerfile: https://opendev.org/airship/images/src/branch/master/image-builder/Dockerfile.ubuntu_focal
+.. _example Dockerfile: https://opendev.org/airship/images/src/branch/master/bootstrap_capo/Dockerfile
