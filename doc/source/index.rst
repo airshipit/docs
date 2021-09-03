@@ -47,7 +47,7 @@ developers.
    :caption: Try Airship 2
    :maxdepth: 1
 
-   airship2/airship-in-a-pod.rst
+   Airship in a POD (AIAP) <https://opendev.org/airship/airshipctl/src/branch/master/tools/airship-in-a-pod>
    airship2/baremetal.rst
    airship2/providers.rst
 
