@@ -78,7 +78,7 @@ tasks.
    ./tools/init_site.sh
 
 .. note::
-   The environment variables have default values that point to arishipctl
+   The environment variables have default values that point to airshipctl
    release tag v2.0.0 and treasuremap release tag v2.0.0. You only need
    to (re)set them in the command line if you want a different release
    version, a branch or a specific commit.
@@ -123,7 +123,7 @@ Before you start, collect the following network information:
    * PXE network interface name
    * The name of the two 25G networks used for the bonded interface
    * OAM, Calico and Storage VLAN ID's
-   * OAM, Calico and Storage netowrk configuration
+   * OAM, Calico and Storage network configuration
    * PXE, OAM, Calico and Storage IP addresses for ephemeral/controller nodes
      and worker nodes
    * Kubernetes and ingress virtual IP address (on OAM)

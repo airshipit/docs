@@ -19,7 +19,7 @@ Airship 1.0 Deploy and Update Site Flow
    and finally site-level repositories.  These may be entirely different
    repositories with different permissions.  Pegleg facilitates cloning
    all of these at the correct revisions according to the definition for
-   that site. Pegleg can be driven via a jenkins pipeline, which can be
+   that site. Pegleg can be driven via a Jenkins pipeline, which can be
    further abstracted in something like an NC3C dashboard, or it can be
    driven on the command line directly by imitating the behavior in the
    pipeline.
@@ -73,7 +73,7 @@ Airship 1.0 Deploy and Update Site Flow
 |vspace|
 
 3. Once pegleg has decrypted the secrets in the document set within an
-   ephemeral jenkins pipeline, pegleg collect is called to assemble them
+   ephemeral Jenkins pipeline, pegleg collect is called to assemble them
    all, and finally that is piped to the shipyard client which will
    publish them via REST API to a Shipyard API service running within the
    site. There are two scenarios under which Shipyard may be running in

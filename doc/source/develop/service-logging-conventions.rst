@@ -33,7 +33,7 @@ reasonable approximation is desired.
 
 Where:
 
--  Timestamp is like ``2006-02-08 22:20:02,165``, or the standard ouptut from
+-  Timestamp is like ``2006-02-08 22:20:02,165``, or the standard output from
    ``%(asctime)s``
 -  Level is 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL', padded to 8
    characters, left aligned.

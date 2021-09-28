@@ -57,7 +57,7 @@ and relationships between layers are captured by a
 ``kustomization.yaml`` referencing an external Kustomization.  Additionally,
 Airship layers may refer to layers in other code repositories, and Airship
 will ensure all required projects are present and in expected locations relative
-to a site defintion.  This allows for operator-specific (upstream or downstream)
+to a site definition.  This allows for operator-specific (upstream or downstream)
 repositories to inherit and reuse the bulk of declarative intent from
 common, upstream sources; e.g. the Airship Treasuremap_ project.
 By convention, Airship manifests can be found in a project's
@@ -88,7 +88,7 @@ which is used by projects such as ``kubectl``, ``kpt``, and ``airshipctl``.
 Airshipctl incorporates Kustomize into its higher-order functionality, so
 that it's invoked as part of ``airshipctl phase run``, rendering
 manifests into a deployable form before deploying them directly to a
-Kubernetes apiserver.  However, Airship follows the design decision for
+Kubernetes api server.  However, Airship follows the design decision for
 its YAMLs to be fully renderable using the stock ``kustomize`` command.
 
 The basic building block for Kustomize manifests is called a "kustomization",
@@ -119,7 +119,7 @@ ReplacementTransformer
 Kustomize is very good at layering patches on top of resources, but has
 some weakness when performing substitution/replacement type operations,
 i.e., taking information from one document and injecting it into another
-document.  This operation is very critical to Airship from a de-duplication
+document.  This operation is very critical to Airship from a deduplication
 perspective, since the same information (e.g. a Kubernetes version or
 some networking information) would be needed in multiple resources.
 Replacement helps satisfy the DRY principle.  Although Kustomize has a few
@@ -147,7 +147,7 @@ While ReplacementTransformer modifies existing resources, the Templater
 is a Kustomize "generator" plugin that creates brand new resources based
 on a Go Template.  This is helpful when you have a number of resources
 that are nearly identical, and allows the common parts to be
-de-duplicated into a template.  An example of this would be resources
+deduplicated into a template.  An example of this would be resources
 that are specific per-host (like Metal3 ``BareMetalHost``).
 
 The ReplacementTransformer and Templater can also be combined in a chain,
@@ -164,7 +164,7 @@ Encryption, Decryption, and Secret Generation
 Encryption and decryption is handled via the `sops` KRM Function maintained
 by the KPT community.  This function in turn uses the Mozilla SOPS tool
 to perform asymmetric key-based decryption on encrypted values within
-YAML resources.  
+YAML resources.
 
 In addition, passwords, keys, and other sensitive secrets can be generated
 from scratch on a site-by-site basis.  This helps ensure that secrets are
@@ -185,7 +185,7 @@ one resource.  However, it does not solve for the case where some piece
 of configuration, e.g. a Kubernetes version number, needs to be applied
 against multiple resources that need it.  Using patches alone, this would
 result in duplicating the same version number defined in multiple patches
-within the same layer, increasing both maintenace effort and opportunity
+within the same layer, increasing both maintenance effort and opportunity
 for human error.  To address this, Airship uses the ReplacementTransformer
 plugin described above.
 
@@ -303,7 +303,7 @@ on an operator-by-operator basis (for shared network services like DNS),
 and on a site-by-site basis (for subnet IP address ranges).
 This information is extracted into a VariableCatalogue with
 ``name: networks``.  Individual functions that consume the information will
-provide their own replacent rules to do so.
+provide their own replacement rules to do so.
 
 A default/example set of values is defined in the ``airshipctl-catalogues``
 function, and it can be patched (or duplicated) at the Type or Site levels to

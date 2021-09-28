@@ -109,7 +109,7 @@ Required Headers
 
 X-Auth-Token
   The auth token to identify the invoking user. Required unless the resource is
-  explictly unauthenticated.
+  explicitly unauthenticated.
 
 Optional Headers
 ----------------
@@ -215,14 +215,14 @@ ValidationMessage:
    the design documents by schema and name that were involved in the specific
    validation. If the documents element is not provided, or is an empty list,
    the assumption is that the validation is not traced to a document, and may
-   be a validaiton of environmental or process needs.
+   be a validation of environmental or process needs.
 
    -  schema (required): The schema of the document.
       E.g. drydock/NetworkLink/v1
    -  name (required): The name of the document.
       E.g. pxe-rack1
 
--  error (required): true if the message indcates an error, false if the
+-  error (required): true if the message indicates an error, false if the
    message indicates a non-error.
 -  kind (required): ValidationMessage
 -  level (required): The severity of the validation result. This should align
