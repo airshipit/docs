@@ -57,7 +57,7 @@ and relationships between layers are captured by a
 ``kustomization.yaml`` referencing an external Kustomization.  Additionally,
 Airship layers may refer to layers in other code repositories, and Airship
 will ensure all required projects are present and in expected locations relative
-to a site defintion.  This allows for operator-specific (upstream or downstream)
+to a site definition.  This allows for operator-specific (upstream or downstream)
 repositories to inherit and reuse the bulk of declarative intent from
 common, upstream sources; e.g. the Airship Treasuremap_ project.
 By convention, Airship manifests can be found in a project's
@@ -185,7 +185,7 @@ one resource.  However, it does not solve for the case where some piece
 of configuration, e.g. a Kubernetes version number, needs to be applied
 against multiple resources that need it.  Using patches alone, this would
 result in duplicating the same version number defined in multiple patches
-within the same layer, increasing both maintenace effort and opportunity
+within the same layer, increasing both maintenance effort and opportunity
 for human error.  To address this, Airship uses the ReplacementTransformer
 plugin described above.
 
@@ -303,7 +303,7 @@ on an operator-by-operator basis (for shared network services like DNS),
 and on a site-by-site basis (for subnet IP address ranges).
 This information is extracted into a VariableCatalogue with
 ``name: networks``.  Individual functions that consume the information will
-provide their own replacent rules to do so.
+provide their own replacement rules to do so.
 
 A default/example set of values is defined in the ``airshipctl-catalogues``
 function, and it can be patched (or duplicated) at the Type or Site levels to

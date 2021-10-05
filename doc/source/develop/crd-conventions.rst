@@ -20,7 +20,7 @@ CRD Conventions
 ===============
 
 Airship will use CRDs to enrich the Kubernetes API with Airship-specific
-document schema.  Airship projects will follow the following conventions
+document schema. Airship projects will follow the following conventions
 when defining Custom Resource Definitions (CRDs).
 
 Note that Airship integrates and consumes a number of projects from
@@ -41,4 +41,3 @@ this list may grow in the future.
    following the convention ``<function>.airshipit.org``.
 
 .. _Kubernetes API Conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md
-

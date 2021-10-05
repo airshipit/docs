@@ -29,7 +29,7 @@ Consumer documentation is that which is intended to be referenced by users of
 the component. This includes information about each of the following:
 
 -  Introduction - the purpose and charter of the software
--  Features - capabilies the software has
+-  Features - capabilities the software has
 -  Usage - interaction with the software - e.g. API and CLI documentation
 -  Setup/Installation - how an end user would set up and run the software
    including system requirements
@@ -41,8 +41,8 @@ Developer Documentation
 Developer documentation is used by developers of the software, and addresses
 the following topics:
 
--  Archiecture and Design - features and structure of the software
--  Inline, Code, Method - documentaiton specific to the fuctions and procedures
+-  Architecture and Design - features and structure of the software
+-  Inline, Code, Method - documentation specific to the functions and procedures
    in the code
 -  Development Environment - explaining how a developer would need to configure
    a working environment for the software

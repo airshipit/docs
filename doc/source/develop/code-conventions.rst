@@ -125,7 +125,7 @@ should implement each of the following Makefile targets:
 -  ``docs`` should render any documentation that has build steps.
 -  ``run_{component_name}`` should build the image and do a rudimentary (at
    least) test of the image's functionality.
--  ``run_images`` performs the inidividual run_{component_name} targets for
+-  ``run_images`` performs the individual run_{component_name} targets for
    projects that produce more than one image.
 -  ``tests`` to invoke linting tests (e.g. PEP-8) and unit tests for the
    components in the project
@@ -255,7 +255,7 @@ target language ecosystem.
 For Python projects, the preferred location for tests is a ``tests`` directory
 under the directory for the module. E.g. Tests for module foo:
 {root}/src/bin/foo/foo/tests.
-An alternataive location is ``tests`` at the root of the project, although this
+An alternative location is ``tests`` at the root of the project, although this
 should only be used if there are not multiple components represented in the
 same repository, or if the tests cross the components in the repository.
 

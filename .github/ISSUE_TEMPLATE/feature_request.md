@@ -12,4 +12,3 @@ A description of the documentation enhancement or addition.
 
 **Proposed change**
 A detailed description of the new change, any verbiage to be included, etc.
-

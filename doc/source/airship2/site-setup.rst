@@ -7,7 +7,7 @@ Component Overview
 ------------------
 
 Airship uses a command line utility airshipctl that drives the deployment and
-lifecycling management of Kubernetes clouds and software stacks.
+life cycling management of Kubernetes clouds and software stacks.
 
 This utility articulates lifecycle management as a list of phases, or as a
 plan of phases or plan. For each of these phases, a YAML document set is
@@ -87,7 +87,7 @@ Disk
    support the integration with the `Rook Storage Operator`_. However, the
    manifests for the Rook deployment can be found in the
    ``manifests/function/rook-operator`` directory. If you plan to include
-   Rook for Ceph storage, it is recommeneded to have the additional disks
+   Rook for Ceph storage, it is recommended to have the additional disks
    on all the controller nodes and worker nodes:
 
    - Two disks JBOD: Ceph Journal and Metadata
