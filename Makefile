@@ -50,3 +50,8 @@ clean:
 .PHONY: tests
 tests: check-tox
 	tox
+
+# Validate all URL references in documentation work
+.PHONY: dead-link-linter
+dead-link-linter:
+	@./tools/dead-link-linter
