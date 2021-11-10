@@ -88,7 +88,7 @@ which is used by projects such as ``kubectl``, ``kpt``, and ``airshipctl``.
 Airshipctl incorporates Kustomize into its higher-order functionality, so
 that it's invoked as part of ``airshipctl phase run``, rendering
 manifests into a deployable form before deploying them directly to a
-Kubernetes apiserver.  However, Airship follows the design decision for
+Kubernetes api server.  However, Airship follows the design decision for
 its YAMLs to be fully renderable using the stock ``kustomize`` command.
 
 The basic building block for Kustomize manifests is called a "kustomization",
@@ -119,7 +119,7 @@ ReplacementTransformer
 Kustomize is very good at layering patches on top of resources, but has
 some weakness when performing substitution/replacement type operations,
 i.e., taking information from one document and injecting it into another
-document.  This operation is very critical to Airship from a de-duplication
+document.  This operation is very critical to Airship from a deduplication
 perspective, since the same information (e.g. a Kubernetes version or
 some networking information) would be needed in multiple resources.
 Replacement helps satisfy the DRY principle.  Although Kustomize has a few
@@ -147,7 +147,7 @@ While ReplacementTransformer modifies existing resources, the Templater
 is a Kustomize "generator" plugin that creates brand new resources based
 on a Go Template.  This is helpful when you have a number of resources
 that are nearly identical, and allows the common parts to be
-de-duplicated into a template.  An example of this would be resources
+deduplicated into a template.  An example of this would be resources
 that are specific per-host (like Metal3 ``BareMetalHost``).
 
 The ReplacementTransformer and Templater can also be combined in a chain,
@@ -164,7 +164,7 @@ Encryption, Decryption, and Secret Generation
 Encryption and decryption is handled via the `sops` KRM Function maintained
 by the KPT community.  This function in turn uses the Mozilla SOPS tool
 to perform asymmetric key-based decryption on encrypted values within
-YAML resources.  
+YAML resources.
 
 In addition, passwords, keys, and other sensitive secrets can be generated
 from scratch on a site-by-site basis.  This helps ensure that secrets are

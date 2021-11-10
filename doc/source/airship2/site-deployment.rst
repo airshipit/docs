@@ -51,7 +51,7 @@ already configured with default values for a typical deployment or inferred
 from other configuration files or site manifests. In most situations, users
 do not need to manually set the values for these environment variables.
 
- * ``KUBECONFIG``: The location of kubeconfig file. Default value:
+ * ``KUBECONFIG``: The location of the kubeconfig file. Default value:
    ``$HOME/.airship/kubeconfig``.
  * ``KUBECONFIG_TARGET_CONTEXT``: The name of the kubeconfig context for the
    target cluster. Default value: "target-cluster". You can find it defined
