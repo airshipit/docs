@@ -55,7 +55,7 @@ testing of Airship on bare metal.
 To create a new site definition from the ``reference-airship-core`` site, the
 following steps are required:
 
-1. Clone the ``treasuremap`` repository at the specified reference in the Airship
+1. Clone or checkout the ``treasuremap`` repository at the specified reference in the Airship
    home directory.
 2. Create a project side-by-side with ``airshipctl`` and ``treasuremap`` directory.
 3. Copy the reference site manifests to ${PROJECT}/manifests/site/${SITE}.
@@ -69,9 +69,9 @@ tasks.
 .. code-block:: bash
 
    export AIRSHIPCTL_REF_TYPE=tag # type can be "tag", "branch" or "commithash"
-   export AIRSHIPCTL_REF=v2.0.0 # update with the git ref you want to use
+   export AIRSHIPCTL_REF=v2.1.0 # update with the git ref you want to use
    export TREASUREMAP_REF_TYPE=tag # type can be "tag", "branch" or "commithash"
-   export TREASUREMAP_REF=v2.0.0 # update with the git ref you want to use
+   export TREASUREMAP_REF=v2.1.0 # update with the git ref you want to use
    export REFERENCE_SITE=../treasuremap/manifests/site/reference-airship-core
    export REFERENCE_TYPE=airship-core # the manifest type the reference site uses
 
@@ -79,17 +79,17 @@ tasks.
 
 .. note::
    The environment variables have default values that point to airshipctl
-   release tag v2.0.0 and treasuremap release tag v2.0.0. You only need
+   release tag v2.1.0 and treasuremap release tag v2.1.0. You only need
    to (re)set them in the command line if you want a different release
    version, a branch or a specific commit.
 
    To find the Airship release versions and tags, go to :ref:`versioning`. In
-   addition to release tag, the user can also specify a branch (e.g., v2.0)
+   addition to release tag, the user can also specify a branch (e.g., v2.1)
    or a specific commit ID when checking out the ``treasuremap`` or ``airshipctl``
    repository.
 
 .. _reference-airship-core:
-   https://github.com/airshipit/treasuremap/tree/v2.0/manifests/site/reference-airship-core
+   https://github.com/airshipit/treasuremap/tree/v2.1/manifests/site/reference-airship-core
 
 Preparing Deployment Documents
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -132,19 +132,19 @@ Before you start, collect the following network information:
 
 First, define the target and ephemeral networking catalogues.
 
-   * ``manifests/site/${SITE}/target/catalogues/networking.yaml``:
+   * ``manifests/site/${SITE}/target/catalogues/shareable/networking.yaml``:
      Contains the network definition in the entire system.
-   * ``manifests/site/${SITE}/target/catalogues/networking-ha.yaml``:
+   * ``manifests/site/${SITE}/target/catalogues/shareable/networking-ha.yaml``:
      Defines the Kubernetes and ingress virtual IP addresses as well as the
      OAM interface.
-   * ``manifests/site/${SITE}/ephemeral/catalogues/networking.yaml``:
+   * ``manifests/site/${SITE}/ephemeral/catalogues/shareable/networking.yaml``:
      Provides only the overrides specific to the ephemeral nodes.
 
 Last, update network references (e.g., interface name, IP address, port) in
 the target cluster deployment documents:
 
    * ``manifests/site/${SITE}/phases/phase-patch.yaml``
-   * ``manifests/site/${SITE}/target/catalogues/versions-airshipctl.yaml``
+   * ``manifests/site/${SITE}/target/catalogues/shareable/versions-airshipctl.yaml``
    * ``manifests/site/${SITE}/target/controlplane/metal3machinetemplate.yaml``
    * ``manifests/site/${SITE}/target/controlplane/versions-catalogue-patch.yaml``
    * ``manifests/site/${SITE}/target/initinfra-networking/patch_calico.yaml``
@@ -166,7 +166,7 @@ Update the host inventory and other ephemeral and target cluster documents:
 
    * ``manifests/site/${SITE}/host-inventory/hostgenerator/host-generation.yaml``:
      Lists the host names of the all the nodes in the host inventory.
-   * ``manifests/site/${SITE}/target/catalogues/hosts.yaml``: The host catalogue
+   * ``manifests/site/${SITE}/target/catalogues/shareable/hosts.yaml``: The host catalogue
      defines the host information such as BMC address, credential, PXE NIC, IP
      addresses, hardware profile name, etc., for every single host.
    * ``manifests/site/${SITE}/ephemeral/bootstrap/baremetalhost.yaml``:
@@ -179,11 +179,31 @@ Update the host inventory and other ephemeral and target cluster documents:
    * ``manifests/site/${SITE}/phases/phase-patch.yaml``: Updates the ephemeral
      node host name and ISO URL.
    * ``manifests/site/${SITE}/target/controlplane/hostgenerator/host-generation.yaml``:
-     Defines the list of hosts to be deployed in the target cluster.
+     Defines the list of hosts to be deployed in the target cluster control plane.
    * ``manifests/site/${SITE}/target/workers/hostgenerator/host-generation.yaml``:
      Defines the list of hosts of the worker nodes.
-   * ``manifests/site/air-pod01/target/workers/provision/machinedeployment.yaml``:
-     Configures the total number of worker nodes
+   * ``manifests/site/${SITE}/target/workers/provision/machinedeployment.yaml``:
+     Configures the total number of worker nodes.
+
+Storage
++++++++
+
+Using a general purpose `Ceph cluster configuration`_ in Treasuremap manifests,
+Rook will deploy Ceph cluster using all the remaining disks, i.e., raw devices
+with no partitions or formatted filesystems, on all the hosts (both controller
+and worker nodes).
+
+The user can customize the Ceph cluster configuration based on specific use
+cases. The following is an example to specify which hosts to include in the
+storage cluster and which devices to use for Ceph:
+
+* ``treasuremap/manifests/site/{SITE}/target/catalogues/shareable/storage.yaml``
+
+For more information, please refer to `Rook Ceph Storage <https://rook.io/docs/rook/v1.6/ceph-storage.html>`_
+document.
+
+.. _Ceph cluster configuration:
+   https://github.com/airshipit/treasuremap/blob/master/manifests/composite/storage-cluster/cephcluster.yaml#L32-L33
 
 Downstream Images and Binaries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
