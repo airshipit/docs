@@ -16,6 +16,9 @@
     vars:
       rtd_webhook_id: '90144'
       rtd_project_name: 'airship-docs'
+    check:
+      jobs:
+        - airship-docs-dead-link-linter
     post:
       jobs:
         - airship-docs-upload-git-mirror
@@ -33,6 +36,12 @@
       - name: git_mirror_credentials
         secret: airship-docs-airshipit-github-secret
         pass-to-parent: true
+
+- job:
+    name: airship-docs-dead-link-linter
+    description: Ensures all URLs referenced in documentation are still working
+    run: playbooks/airship-docs-dead-link-linter.yaml
+    voting: false
 
 - secret:
     name: airship-docs-airshipit-github-secret
