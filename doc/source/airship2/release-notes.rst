@@ -30,11 +30,27 @@ Combining easy lifecycle management with zero-downtime real-time upgrade capabil
 Airship can handle the
 provisioning and configuration of the operating system, RAID services, and the network.
 
+Airship 2.1 (30 November 2021)
+------------------------------
+
+Release 2.1 introduces the following enhancements:
+- Upgrade components to parity with Cluster API v1alpha4, including Bare Metal Operator v1alpha5
+- Kubernetes upgrade to version 1.21
+- Docker provider upgrade to v1alpha3
+- CAPD and CAPZ upgrades to versions 0.4.2 and 0.5.2, respectively
+- Airship in a Pod hardening and improvements such as support for custom site manifest locations and private repositories. (`477`_)
+- Helm Controller upgrade to version 0.11.1 and Source Controller to version 0.15.3 (`607`_)
+- Kustomize upgrade to version 4.2.0
+- KPT upgrade to to version 1.0.0-beta.7
+- Support of iLO5 in bare metal node bootstrapping
+
+.. _477: https://github.com/airshipit/airshipctl/issues/477
+.. _607: https://github.com/airshipit/airshipctl/issues/607
+
 Airship 2.0 (16 April 2021)
-------------------------------------
+---------------------------
 
 Release 2.0 introduces a variety of significant improvements:
-
 -  No-touch bootstrap for remote sites as well as local sites
 -  Declarative image building for both ephemeral ISO and bare metal targeted QCOWs
 -  Declarative cluster lifecycle
