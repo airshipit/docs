@@ -34,6 +34,7 @@ Airship 2.1 (30 November 2021)
 ------------------------------
 
 Release 2.1 introduces the following enhancements:
+
 - Upgrade components to parity with Cluster API v1alpha4, including Bare Metal Operator v1alpha5
 - Kubernetes upgrade to version 1.21
 - Docker provider upgrade to v1alpha3
@@ -51,6 +52,7 @@ Airship 2.0 (16 April 2021)
 ---------------------------
 
 Release 2.0 introduces a variety of significant improvements:
+
 -  No-touch bootstrap for remote sites as well as local sites
 -  Declarative image building for both ephemeral ISO and bare metal targeted QCOWs
 -  Declarative cluster lifecycle
